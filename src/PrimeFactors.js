@@ -1,7 +1,7 @@
 class PrimeFactors {
   generate (number) {
-    if (number === 1) return []
-    if (number === 2) return [2]
+    if (number < 2) return []
+    else return [number]
   }
 }
 module.exports = PrimeFactors
