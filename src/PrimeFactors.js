@@ -1,17 +1,19 @@
 class PrimeFactors {
 
   isPrime (number) {
-    if (number < 2) return []
-    if (number === 2) return [number]
-    if (number % 2 === 0) return []
+    if (number < 2) return false
+    if (number === 2) return true
+    if (number % 2 === 0) return false
     for (let i = 3, s = Math.sqrt(number); i <= s; i+=2) {
-      if(number % i === 0) return []
+      if(number % i === 0) return false
     }
-    return [number]
+    return true
     
   }
   generate (number) {
-    return this.isPrime(number)
+    if (this.isPrime(number))
+    return [number]
+    return []
   }
 }
 module.exports = PrimeFactors
