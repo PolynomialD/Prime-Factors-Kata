@@ -15,4 +15,9 @@ describe('MyClass', () => {
     const primeFactors = new PrimeFactors()
     primeFactors.generate(3).should.eql([3])
   })
+
+  verify.it('4 should return [2,2]', () => {
+    const primeFactors = new PrimeFactors()
+    primeFactors.generate(4).should.eql([2,2])
+  })
 })
