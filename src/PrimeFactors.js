@@ -11,7 +11,10 @@ class PrimeFactors {
 
   splitPrimes (number) {
     for (let i=2, s = Math.sqrt(number); i <= s; i++) {
-      if (number % i === 0) return [i,number/i]
+      if (number % i === 0 && number/i >= 4) {let number2 = number/i
+        if (number2 % i === 0) {return [i,number2/i,number2/i]
+        } 
+      } else {return [i,number/i]}
     }
   }
 
