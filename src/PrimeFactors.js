@@ -10,14 +10,23 @@ class PrimeFactors {
   }
 
   splitPrimes (number) {
-    for (let i=2, s = Math.sqrt(number); i <= s; i++) {
-      if (number % i === 0 && this.isPrime(number/i)) return [i,number/i]
-      if (number % i === 0 && !this.isPrime(number/i)) {
-        let number2 = number/i
-        if (number2 % i === 0) return [i, number2/i, number2/i]
+    let array = []
+    for (let i=2, s = Math.sqrt(number); i <= s; i++){
+      let remainder = number/i
+      if (number % i === 0 && this.isPrime(remainder)) {
+        array.push(i, remainder)
+        return array.sort((a, b) => a-b)
+      }
+      if (number % i === 0 && !this.isPrime(remainder)) {
+        if (remainder % i === 0 && this.isPrime(remainder/i)) {
+          array.push(i, remainder/i, remainder/i)
+          return array.sort((a, b) => a-b)
+        }
+        array.push(i)
+        number = remainder
       }
     }
-  }
+  } 
 
   generate (number) {
     if (number < 2) return []
@@ -26,3 +35,4 @@ class PrimeFactors {
   }
 }
 module.exports = PrimeFactors
+
