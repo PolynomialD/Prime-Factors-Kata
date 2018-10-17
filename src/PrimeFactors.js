@@ -10,14 +10,15 @@ class PrimeFactors {
   }
 
   splitPrimes (number) {
-    if (number % 2 === 0) {return [2,number/2]}
+    for (let i=2, s = Math.sqrt(number); i <= s; i++) {
+      if (number % i === 0) return [i,number/i]
+    }
   }
 
   generate (number) {
     if (number < 2) return []
-    if (this.isPrime (number)) {
-      return [number]
-    } else { return this.splitPrimes (number)
+    if (this.isPrime (number)) { return [number]
+    } else { return this.splitPrimes(number)
       }
   }
 }
